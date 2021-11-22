@@ -23,6 +23,9 @@ type
     { Public declarations }
   end;
 
+Procedure IndySendText(Text:string);
+Function IndyReadText:string;
+
 var
   MainForm: TMainForm;
 
@@ -30,10 +33,24 @@ implementation
 
 {$R *.dfm}
 
+uses uUsersForm;
+
+Function FindErrorConnect:Boolean;
+begin
+  Result:=False;
+  if MainForm.IdTCPClient.Connected=False then
+  begin
+    Result:=True;
+    ShowMessage('Потеря соединения с сервером. Работа программы не возможна.');
+    MainForm.Close;
+  end;
+end;
+
 Procedure IndySendText(Text:string);
 var
 	StringStream:TStringStream;
 begin
+  if FindErrorConnect=True then Exit;
     StringStream:=TStringStream.Create;
     StringStream.WriteString(Text);
     StringStream.Position:=0;
@@ -45,12 +62,14 @@ Function IndyReadText:string;
 var
 	StringStream:TStringStream;
 begin
+  if FindErrorConnect=True then Exit;
 	StringStream:=TStringStream.Create;
 	MainForm.IdTCPClient.IOHandler.ReadStream(StringStream);
 	StringStream.Position:=0;
   Result:=StringStream.ReadString(StringStream.Size);
 	StringStream.Free;
 end;
+
 
 procedure TMainForm.BtnConnectClick(Sender: TObject);
 var
@@ -65,6 +84,12 @@ begin
   if EdtName.Text='' then
   begin
     ShowMessage('Введите имя');
+    EdtName.SetFocus;
+    Exit;
+  end;
+  if AnsiUpperCase(EdtName.Text)='ОБЩИЙ' then
+  begin
+    ShowMessage('Это имя зарезервировано');
     EdtName.SetFocus;
     Exit;
   end;
@@ -95,8 +120,8 @@ begin
     IdTCPClient.Disconnect;
     Exit;
   end;
-
-  ShowMessage('Успешно');
+  MainForm.Hide;
+  UsersForm.Show;
 end;
 
 procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -105,7 +130,7 @@ begin
   begin
     IndySendText('-'+EdtName.Text);
       if IndyReadText<>'0' then ShowMessage('Ошибка соединения');
-    IdTCPClient.Disconnect;
+        IdTCPClient.Disconnect;
   end;
 end;
 

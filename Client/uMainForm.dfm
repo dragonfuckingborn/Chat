@@ -90,7 +90,7 @@ object MainForm: TMainForm
     ConnectTimeout = 0
     Port = 0
     ReadTimeout = -1
-    Left = 19
+    Left = 11
     Top = 16
   end
 end

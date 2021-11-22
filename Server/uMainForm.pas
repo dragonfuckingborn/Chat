@@ -121,6 +121,18 @@ begin
 	StringStream.Free;
 end;
 
+Function GetAllClients:string;
+var
+  I:Integer;
+begin
+  Result:='';
+  for I := 1 to High(Clients) do
+  begin
+    if Clients[I].Used=False then Continue;
+    Result:=Result+Clients[I].Name+'#';
+  end;
+end;
+
 Procedure SendMessageToLog(Text:string);
 begin
   MainForm.RchEdtLog.SelStart:=Length(MainForm.RchEdtLog.Text);
@@ -166,6 +178,11 @@ begin
       IndySendText(AContext, '10');
       SendMessageToLog('Клиент '+Text+' не отключен')
     end;
+  end;
+
+  if Text[1]='*' then
+  begin
+    IndySendText(AContext, GetAllClients);
   end;
 end;
 
