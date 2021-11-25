@@ -23,6 +23,7 @@ type
   TClient=record
     Used:Boolean;
     Name:string;
+    Messages:string;
 end;
 
 var
@@ -76,6 +77,7 @@ begin
     begin
       Clients[I].Name:=Name;
       Clients[I].Used:=True;
+      Clients[I].Messages:='';
       Exit;
     end;
   end;
@@ -133,6 +135,49 @@ begin
   end;
 end;
 
+Function SendMessageClient(Text:string):Boolean;
+var
+  User:string;
+  I:Integer;
+begin
+  Result:=False;
+  User:=Copy(Text, 1, AnsiPos('&', Text)-1);
+  for I := 1 to High(Clients) do
+  begin
+    if Clients[I].Used=False then Continue;
+    if AnsiUpperCase(User)='наыхи' then
+    begin
+      Clients[I].Messages:=Clients[I].Messages+Text+'#';
+      Result:=True;
+    end else
+    begin
+      if AnsiUpperCase(Clients[I].Name)=AnsiUpperCase(User) then
+      begin
+        Clients[I].Messages:=Clients[I].Messages+Text+'#';
+        Result:=True;
+        Exit;
+      end;
+    end;
+  end;
+end;
+
+Function GetMessages(Name:string):string;
+var
+  I:Integer;
+begin
+  Result:='0';
+  for I := 1 to High(Clients) do
+  begin
+    if Clients[I].Used=False then Continue;
+    if AnsiUpperCase(Clients[I].Name)=AnsiUpperCase(Name) then
+    begin
+      Result:=Clients[I].Messages;
+      Clients[I].Messages:='';
+      Exit;
+    end;
+  end;
+end;
+
 Procedure SendMessageToLog(Text:string);
 begin
   MainForm.RchEdtLog.SelStart:=Length(MainForm.RchEdtLog.Text);
@@ -183,6 +228,19 @@ begin
   if Text[1]='*' then
   begin
     IndySendText(AContext, GetAllClients);
+  end;
+
+  if Text[1]='=' then
+  begin
+    Delete(Text, 1, 1);
+    if SendMessageClient(Text)=True then IndySendText(AContext, '0') else
+      IndySendText(AContext, '1');
+  end;
+
+  if Text[1]='@' then
+  begin
+    Delete(Text, 1, 1);
+    IndySendText(AContext, GetMessages(Text));
   end;
 end;
 

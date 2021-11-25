@@ -59,6 +59,7 @@ object UsersForm: TUsersForm
     Caption = #1054#1050
     Default = True
     TabOrder = 1
+    OnClick = BtnOKClick
   end
   object BtnRefresh: TButton
     Left = 112

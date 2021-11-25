@@ -14,6 +14,7 @@ type
     BtnRefresh: TButton;
     procedure FormShow(Sender: TObject);
     procedure BtnRefreshClick(Sender: TObject);
+    procedure BtnOKClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
@@ -28,7 +29,7 @@ implementation
 
 {$R *.dfm}
 
-uses uMainForm;
+uses uMainForm, uMessageForm;
 
 Procedure LoadUsersList;
 var
@@ -52,6 +53,15 @@ begin
       Break;
     end;
   end;
+end;
+
+procedure TUsersForm.BtnOKClick(Sender: TObject);
+begin
+  if ListBox.ItemIndex=-1 then Exit;
+  MessageForm.UserName:=ListBox.Items[ListBox.ItemIndex];
+  MessageForm.Caption:='×àò: '+MessageForm.UserName;
+  UsersForm.Hide;
+  MessageForm.Show;
 end;
 
 procedure TUsersForm.BtnRefreshClick(Sender: TObject);

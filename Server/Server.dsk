@@ -1,35 +1,35 @@
 ﻿[Closed Files]
-File_0=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Errors.pas',0,1,227,68,139,0,0,,
-File_1=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Main.pas',0,1,52,37,74,0,0,,
-File_2=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Word.pas',0,1,306,1,323,0,0,,
-File_3=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Schedule.pas',0,1,142,25,156,0,0,,
-File_4=TSourceModule,'c:\program files (x86)\embarcadero\studio\22.0\source\rtl\common\System.Classes.pas',0,1,7606,1,7610,0,0,,
-File_5=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Settings.pas',0,1,206,5,226,0,0,,
-File_6=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Select.pas',0,1,31,46,13,0,0,,
-File_7=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Table.pas',0,1,1,59,82,0,0,,
-File_8=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Cabinets.pas',0,1,388,27,414,0,0,,
-File_9=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Global.pas',0,1,1,49,178,0,0,,
-File_10=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Progress.pas',0,1,1,1,1,0,0,,
-File_11=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Lesson.pas',0,1,157,63,169,0,0,,
-File_12=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\AddCabinet.pas',0,1,34,1,37,0,0,,
-File_13=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\RenameFIO.pas',0,1,55,3,57,0,0,,
-File_14=TSourceModule,'c:\program files (x86)\embarcadero\studio\22.0\SOURCE\VCL\Vcl.Mask.pas',0,1,307,1,325,0,0,,
+File_0=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Errors.pas',0,1,1,58,18,0,0,,
+File_1=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Word.pas',0,1,368,47,352,0,0,,
+File_2=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Main.pas',0,1,599,7,619,0,0,,
+File_3=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Schedule.pas',0,1,359,66,375,0,0,,
+File_4=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Message.pas',0,1,34,51,40,0,0,,
+File_5=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Table.pas',0,1,40,1,47,0,0,,
+File_6=TSourceModule,'c:\program files (x86)\embarcadero\studio\22.0\source\rtl\common\System.Classes.pas',0,1,7606,1,7610,0,0,,
+File_7=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Settings.pas',0,1,206,5,226,0,0,,
+File_8=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Select.pas',0,1,31,46,13,0,0,,
+File_9=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Cabinets.pas',0,1,388,27,414,0,0,,
+File_10=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Global.pas',0,1,1,49,178,0,0,,
+File_11=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Progress.pas',0,1,1,1,1,0,0,,
+File_12=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Lesson.pas',0,1,157,63,169,0,0,,
+File_13=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\AddCabinet.pas',0,1,34,1,37,0,0,,
+File_14=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\RenameFIO.pas',0,1,55,3,57,0,0,,
 
 [Modules]
-Module0=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_95 -чат\Server\Server.dproj
-Module1=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_95 -чат\Server\uMainForm.pas
+Module0=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_96 -блокировка\Server\Server.dproj
+Module1=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_96 -блокировка\Server\uMainForm.pas
 Count=2
 EditWindowCount=1
 
-[C:\Users\Станислав\Desktop\Чат\История изменений\Чат_95 -чат\Server\Server.dproj]
+[C:\Users\Станислав\Desktop\Чат\История изменений\Чат_96 -блокировка\Server\Server.dproj]
 ModuleType=TBaseProject
 
-[C:\Users\Станислав\Desktop\Чат\История изменений\Чат_95 -чат\Server\uMainForm.pas]
+[C:\Users\Станислав\Desktop\Чат\История изменений\Чат_96 -блокировка\Server\uMainForm.pas]
 ModuleType=TSourceModule
 
 [EditWindow0]
 ViewCount=2
-CurrentEditView=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_95 -чат\Server\Server.dpr
+CurrentEditView=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_96 -блокировка\Server\Server.dpr
 View0=0
 View1=1
 PercentageSizes=1
@@ -63,25 +63,25 @@ BottomMiddelPanelData=0000080001020200000009000000446F636B5369746530100000004772
 
 [View0]
 CustomEditViewType=TEditView
-Module=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_95 -чат\Server\uMainForm.pas
+Module=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_96 -блокировка\Server\uMainForm.pas
 CursorX=1
 CursorY=9
 TopLine=1
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_95 -чат\Server\uMainForm.pas
+EditViewName=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_96 -блокировка\Server\uMainForm.pas
 
 [View1]
 CustomEditViewType=TEditView
-Module=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_95 -чат\Server\Server.dpr
+Module=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_96 -блокировка\Server\Server.dpr
 CursorX=1
 CursorY=8
 TopLine=1
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_95 -чат\Server\Server.dpr
+EditViewName=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_96 -блокировка\Server\Server.dpr
 
 [Watches]
 Count=0
@@ -255,7 +255,7 @@ SplitPos=111
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Caption,
+SelectedItem=Name,
 ExpandedItems=BorderIcons=0
 
 [DebugLogView]
