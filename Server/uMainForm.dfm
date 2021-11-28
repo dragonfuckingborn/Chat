@@ -64,7 +64,7 @@ object MainForm: TMainForm
     Bindings = <>
     DefaultPort = 0
     OnExecute = IdTCPServerExecute
-    Left = 32
+    Left = 24
     Top = 16
   end
 end

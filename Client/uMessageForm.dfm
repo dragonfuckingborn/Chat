@@ -84,7 +84,7 @@ object MessageForm: TMessageForm
     Enabled = False
     Interval = 500
     OnTimer = TmrTimer
-    Left = 40
+    Left = 56
     Top = 32
   end
 end

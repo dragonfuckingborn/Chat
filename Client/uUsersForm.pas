@@ -60,6 +60,12 @@ begin
   if ListBox.ItemIndex=-1 then Exit;
   MessageForm.UserName:=ListBox.Items[ListBox.ItemIndex];
   MessageForm.Caption:='Чат: '+MessageForm.UserName;
+  IndySendText('?'+MainForm.EdtName.Text);
+  if IndyReadText<>'0' then
+  begin
+    ShowMessage('Ошибка создания диалога. Попробуйте обновить список.');
+    Exit;
+  end;
   UsersForm.Hide;
   MessageForm.Show;
 end;

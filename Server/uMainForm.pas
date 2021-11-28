@@ -23,6 +23,7 @@ type
   TClient=record
     Used:Boolean;
     Name:string;
+    Busy:Boolean;
     Messages:string;
 end;
 
@@ -77,6 +78,7 @@ begin
     begin
       Clients[I].Name:=Name;
       Clients[I].Used:=True;
+      Clients[I].Busy:=False;
       Clients[I].Messages:='';
       Exit;
     end;
@@ -131,6 +133,7 @@ begin
   for I := 1 to High(Clients) do
   begin
     if Clients[I].Used=False then Continue;
+    if Clients[I].Busy=True then Continue;
     Result:=Result+Clients[I].Name+'#';
   end;
 end;
@@ -145,6 +148,7 @@ begin
   for I := 1 to High(Clients) do
   begin
     if Clients[I].Used=False then Continue;
+    if Clients[I].Busy=False then Continue;
     if AnsiUpperCase(User)='наыхи' then
     begin
       Clients[I].Messages:=Clients[I].Messages+Text+'#';
@@ -169,10 +173,47 @@ begin
   for I := 1 to High(Clients) do
   begin
     if Clients[I].Used=False then Continue;
+    if Clients[I].Busy=False then Continue;
     if AnsiUpperCase(Clients[I].Name)=AnsiUpperCase(Name) then
     begin
       Result:=Clients[I].Messages;
       Clients[I].Messages:='';
+      Exit;
+    end;
+  end;
+end;
+
+Function SetBusyUser(Name:string):Boolean;
+var
+  I:Integer;
+begin
+  Result:=False;
+  for I := 1 to High(Clients) do
+  begin
+    if Clients[I].Used=False then Continue;
+    if Clients[I].Busy=True then Continue;
+    if AnsiUpperCase(Clients[I].Name)=AnsiUpperCase(Name) then
+    begin
+      Clients[I].Busy:=True;
+      Result:=True;
+      Exit;
+    end;
+  end;
+end;
+
+Function SetFreeUser(Name:string):Boolean;
+var
+  I:Integer;
+begin
+  Result:=False;
+  for I := 1 to High(Clients) do
+  begin
+    if Clients[I].Used=False then Continue;
+    if Clients[I].Busy=False then Continue;
+    if AnsiUpperCase(Clients[I].Name)=AnsiUpperCase(Name) then
+    begin
+      Clients[I].Busy:=False;
+      Result:=True;
       Exit;
     end;
   end;
@@ -241,6 +282,20 @@ begin
   begin
     Delete(Text, 1, 1);
     IndySendText(AContext, GetMessages(Text));
+  end;
+
+  if Text[1]='?' then
+  begin
+    Delete(Text, 1, 1);
+    if SetBusyUser(Text)=True then IndySendText(AContext, '0') else
+      IndySendText(AContext, '1');
+  end;
+
+  if Text[1]='!' then
+  begin
+     Delete(Text, 1, 1);
+    if SetFreeUser(Text)=True then IndySendText(AContext, '0') else
+      IndySendText(AContext, '1');
   end;
 end;
 

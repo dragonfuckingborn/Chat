@@ -91,6 +91,12 @@ end;
 procedure TMessageForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Tmr.Enabled:=False;
+  while WaitResult=True do Sleep(100);
+  IndySendText('!'+MainForm.EdtName.Text);
+  if IndyReadText<>'0' then
+  begin
+    ShowMessage('Ошибка завершения диалога');
+  end;
   UsersForm.Show;
 end;
 
