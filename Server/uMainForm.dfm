@@ -59,12 +59,16 @@ object MainForm: TMainForm
     ReadOnly = True
     ScrollBars = ssVertical
     TabOrder = 0
+    OnChange = RchEdtLogChange
+    OnEnter = RchEdtLogChange
+    OnMouseDown = RchEdtLogMouseDown
+    OnMouseUp = RchEdtLogMouseDown
   end
   object IdTCPServer: TIdTCPServer
     Bindings = <>
     DefaultPort = 0
     OnExecute = IdTCPServerExecute
-    Left = 24
+    Left = 40
     Top = 16
   end
 end

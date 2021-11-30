@@ -47,9 +47,9 @@ begin
   end;
   for I := 0 to UsersForm.ListBox.Count-1 do
   begin
-    if UsersForm.ListBox.Items[I]=MainForm.EdtName.Text then
+        if UsersForm.ListBox.Items[I]=MainForm.EdtName.Text then
     begin
-      UsersForm.ListBox.Items.Delete(I);
+           UsersForm.ListBox.Items.Delete(I);
       Break;
     end;
   end;

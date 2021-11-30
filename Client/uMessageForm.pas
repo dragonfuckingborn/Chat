@@ -18,6 +18,11 @@ type
     procedure FormCreate(Sender: TObject);
     procedure TmrTimer(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure EdtTextKeyPress(Sender: TObject; var Key: Char);
+    procedure EdtTextKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure RchEdtChange(Sender: TObject);
+    procedure RchEdtMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
   private
     { Private declarations }
   public
@@ -35,14 +40,17 @@ implementation
 
 uses uUsersForm, uMainForm;
 
-Procedure SentTextToRichEdit(From:string; Text:string);
+Procedure SentTextToRichEdit(From:string; Text:string; Color:TColor);
 begin
   MessageForm.RchEdt.SelStart:=Length(MessageForm.RchEdt.Text);
+  MessageForm.RchEdt.SelAttributes.Color:=Color;
+  MessageForm.RchEdt.SelAttributes.Bold:=True;
   MessageForm.RchEdt.Lines.Add(From+' ('+DateTimeToStr(Now)+')');
   MessageForm.RchEdt.SelAttributes.Color:=clBlack;
   MessageForm.RchEdt.SelAttributes.Bold:=False;
   MessageForm.RchEdt.Lines.Add(Text);
   MessageForm.RchEdt.Lines.Add('');
+  HideCaret(MessageForm.RchEdt.Handle);
 end;
 
 Procedure GetNewMessages;
@@ -64,7 +72,7 @@ begin
       begin
         if AnsiUpperCase(FromText)<>AnsiUpperCase(MainForm.EdtName.Text) then
         begin
-          SentTextToRichEdit(FromText, Copy(Text, 1, AnsiPos('#', Text)-1));
+          SentTextToRichEdit(FromText, Copy(Text, 1, AnsiPos('#', Text)-1), clRed);
         end;
       end;
       Delete(Text, 1, AnsiPos('#', Text));
@@ -79,15 +87,26 @@ begin
   IndySendText('='+UserName+'&'+MainForm.EdtName.Text+'&'+EdtText.Text);
   if IndyReadText='0' then
   begin
-    SentTextToRichEdit(MainForm.EdtName.Text, EdtText.Text);
-    EdtText.Clear;
+     SentTextToRichEdit(MainForm.EdtName.Text, EdtText.Text, clBlue);
+       EdtText.Clear;
   end else
   begin
-    ShowMessage('Ошибка отправки сообщения');
+        ShowMessage('Ошибка отправки сообщения');
   end;
   WaitResult:=False;
 end;
 
+procedure TMessageForm.EdtTextKeyPress(Sender: TObject; var Key: Char);
+begin
+    if Key='#' then Key:=#0;
+  if Key='&' then Key:=#0;
+end;
+
+procedure TMessageForm.EdtTextKeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+    if Key=VK_RETURN then BtnSend.Click;
+end;
 procedure TMessageForm.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Tmr.Enabled:=False;
@@ -109,6 +128,18 @@ procedure TMessageForm.FormShow(Sender: TObject);
 begin
   RchEdt.Clear;
   Tmr.Enabled:=True;
+end;
+
+procedure TMessageForm.RchEdtChange(Sender: TObject);
+begin
+  SendMessage(RchEdt.handle, WM_VSCROLL, SB_BOTTOM, 0);
+  HideCaret(MessageForm.RchEdt.Handle);
+end;
+
+procedure TMessageForm.RchEdtMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  HideCaret(MessageForm.RchEdt.Handle);
 end;
 
 procedure TMessageForm.TmrTimer(Sender: TObject);

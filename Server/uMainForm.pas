@@ -14,6 +14,9 @@ type
     IdTCPServer: TIdTCPServer;
     procedure FormShow(Sender: TObject);
     procedure IdTCPServerExecute(AContext: TIdContext);
+    procedure RchEdtLogMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure RchEdtLogChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -219,10 +222,12 @@ begin
   end;
 end;
 
-Procedure SendMessageToLog(Text:string);
+Procedure SendMessageToLog(Text:string; Color:TColor);
 begin
   MainForm.RchEdtLog.SelStart:=Length(MainForm.RchEdtLog.Text);
+  MainForm.RchEdtLog.SelAttributes.Color:=Color;
   MainForm.RchEdtLog.Lines.Add('['+DateTimeToStr(Now)+'] '+Text);
+  HideCaret(MainForm.RchEdtLog.Handle);
 end;
 
 
@@ -231,6 +236,7 @@ begin
   LbIP.Caption:=GetLocalIP;
   IdTCPServer.DefaultPort:=1234;
   IdTCPServer.Active:=True;
+  SendMessageToLog('Сервер запущен, ожидание подключений...', clBlue);
   HideCaret(RchEdtLog.Handle);
 end;
 
@@ -248,7 +254,7 @@ begin
     IndySendText(AContext, IntToStr(Code));
     if Code=0 then
     begin
-      SendMessageToLog('Клиент '+Text+' подключен')
+      SendMessageToLog('Клиент '+Text+' подключен', clGreen)
     end;
   end;
 
@@ -258,11 +264,11 @@ begin
     if DeleteClient(Text)=True then
     begin
       IndySendText(AContext, '0');
-      SendMessageToLog('Клиент '+Text+' отключен');
+      SendMessageToLog('Клиент '+Text+' отключен', clRed);
     end else
     begin
       IndySendText(AContext, '10');
-      SendMessageToLog('Клиент '+Text+' не отключен')
+      SendMessageToLog('Клиент '+Text+' не отключен', clRed)
     end;
   end;
 
@@ -297,6 +303,18 @@ begin
     if SetFreeUser(Text)=True then IndySendText(AContext, '0') else
       IndySendText(AContext, '1');
   end;
+end;
+
+procedure TMainForm.RchEdtLogChange(Sender: TObject);
+begin
+  SendMessage(RchEdtLog.handle, WM_VSCROLL, SB_BOTTOM, 0);
+  HideCaret(RchEdtLog.Handle);
+end;
+
+procedure TMainForm.RchEdtLogMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  HideCaret(RchEdtLog.Handle);
 end;
 
 end.

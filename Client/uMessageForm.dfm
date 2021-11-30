@@ -37,6 +37,9 @@ object MessageForm: TMessageForm
     ReadOnly = True
     ScrollBars = ssVertical
     TabOrder = 0
+    OnChange = RchEdtChange
+    OnMouseDown = RchEdtMouseDown
+    OnMouseUp = RchEdtMouseDown
   end
   object Pnl: TPanel
     AlignWithMargins = True
@@ -64,6 +67,8 @@ object MessageForm: TMessageForm
       Margins.Bottom = 0
       Align = alClient
       TabOrder = 0
+      OnKeyPress = EdtTextKeyPress
+      OnKeyUp = EdtTextKeyUp
     end
     object BtnSend: TButton
       Left = 618
@@ -84,7 +89,7 @@ object MessageForm: TMessageForm
     Enabled = False
     Interval = 500
     OnTimer = TmrTimer
-    Left = 56
+    Left = 40
     Top = 32
   end
 end
