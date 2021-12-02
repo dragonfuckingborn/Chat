@@ -16,6 +16,7 @@ object MainForm: TMainForm
   KeyPreview = True
   Position = poScreenCenter
   OnClose = FormClose
+  OnShow = FormShow
   PixelsPerInch = 144
   TextHeight = 32
   object LbIP: TLabel
@@ -90,7 +91,7 @@ object MainForm: TMainForm
     ConnectTimeout = 0
     Port = 0
     ReadTimeout = -1
-    Left = 19
+    Left = 11
     Top = 16
   end
 end

@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ComCtrls, WinSock,
-  IdBaseComponent, IdComponent, IdCustomTCPServer, IdTCPServer, IdContext;
+  IdBaseComponent, IdComponent, IdCustomTCPServer, IdTCPServer, IdContext, IniFiles;
 
 type
   TMainForm = class(TForm)
@@ -17,10 +17,12 @@ type
     procedure RchEdtLogMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure RchEdtLogChange(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
     { Public declarations }
+    Port:Integer;
   end;
 
   TClient=record
@@ -231,10 +233,40 @@ begin
 end;
 
 
-procedure TMainForm.FormShow(Sender: TObject);
+procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
+var
+ Ini:TIniFile;
 begin
+  Ini:=TIniFile.Create(ExtractFilePath(Application.ExeName)+'Config.ini');
+  Ini.WriteBool('MainForm', 'WindowState', WindowState=TWindowState.wsMaximized);
+  if WindowState<>TWindowState.wsMaximized then
+  begin
+    Ini.WriteInteger('MainForm', 'Left', MainForm.Left);
+    Ini.WriteInteger('MainForm', 'Top', MainForm.Top);
+    Ini.WriteInteger('MainForm', 'Height', MainForm.Height);
+    Ini.WriteInteger('MainForm', 'Width', MainForm.Width);
+  end;
+  Ini.WriteInteger('Setting', 'Port', MainForm.Port);
+  Ini.Free;
+end;
+
+procedure TMainForm.FormShow(Sender: TObject);
+var
+ Ini:TIniFile;
+begin
+  Ini:=TIniFile.Create(ExtractFilePath(Application.ExeName)+'Config.ini');
+  MainForm.Left:=Ini.ReadInteger('MainForm', 'Left', MainForm.Left);
+  MainForm.Top:=Ini.ReadInteger('MainForm', 'Top', MainForm.Top);
+  MainForm.Height:=Ini.ReadInteger('MainForm', 'Height', MainForm.Height);
+  MainForm.Width:=Ini.ReadInteger('MainForm', 'Width', MainForm.Width);
+  if Ini.ReadBool('MainForm', 'WindowState', False)=True then
+    WindowState:=TWindowState.wsMaximized else
+      WindowState:=TWindowState.wsNormal;
+  MainForm.Port:=Ini.ReadInteger('Setting', 'Port', 1234);
+  Ini.Free;
+
   LbIP.Caption:=GetLocalIP;
-  IdTCPServer.DefaultPort:=1234;
+  IdTCPServer.DefaultPort:=MainForm.Port;
   IdTCPServer.Active:=True;
   SendMessageToLog('Сервер запущен, ожидание подключений...', clBlue);
   HideCaret(RchEdtLog.Handle);

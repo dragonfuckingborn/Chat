@@ -1,43 +1,40 @@
 ﻿[Closed Files]
-File_0=TSourceModule,'C:\Users\Станислав\Desktop\Чат\История изменений\Чат_98 -сохранение\Server\uMainForm.pas',0,1,1,1,9,0,0,,
-File_1=TSourceModule,'C:\Users\Станислав\Desktop\Чат_98 -сохранение\Client\uMessageForm.pas',0,1,88,29,102,0,0,,
-File_2=TSourceModule,'C:\Users\Станислав\Desktop\Чат_98 -сохранение\Client\uUsersForm.pas',0,1,70,1,1,0,0,,
-File_3=TSourceModule,'C:\Users\Станислав\Desktop\Чат_98 -сохранение\Client\uMainForm.pas',0,1,118,1,1,0,0,,
-File_4=TSourceModule,'C:\Users\Станислав\Desktop\Чат_98 -сохранение\Server\uMainForm.pas',0,1,191,1,1,0,0,,
-File_5=TSourceModule,'C:\Users\Станислав\Desktop\Чат\История изменений\Чат_97 -интерфейс\Client\uMessageForm.pas',0,1,1,1,8,0,0,,
-File_6=TSourceModule,'C:\Users\Станислав\Desktop\Чат\История изменений\Чат_97 -интерфейс\Client\uMainForm.pas',0,1,1,1,9,0,0,,
-File_7=TSourceModule,'C:\Users\Станислав\Desktop\Чат\История изменений\Чат_97 -интерфейс\Client\uUsersForm.pas',0,1,1,1,8,0,0,,
-File_8=TSourceModule,'C:\Users\Станислав\Desktop\Чат\История изменений\Чат_97 -интерфейс\Server\uMainForm.pas',0,1,1,1,9,0,0,,
-File_9=TSourceModule,'C:\Users\Станислав\Desktop\Чат\История изменений\Чат_96 -блокировка\Client\uMessageForm.pas',0,1,1,1,8,0,0,,
-File_10=TSourceModule,'C:\Users\Станислав\Desktop\Чат\История изменений\Чат_96 -блокировка\Client\uMainForm.pas',0,1,1,1,9,0,0,,
-File_11=TSourceModule,'C:\Users\Станислав\Desktop\Чат\История изменений\Чат_96 -блокировка\Client\uUsersForm.pas',0,1,1,1,8,0,0,,
-File_12=TSourceModule,'C:\Users\Станислав\Desktop\Чат\История изменений\Чат_96 -блокировка\Server\uMainForm.pas',0,1,1,1,9,0,0,,
-File_13=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Errors.pas',0,1,1,58,18,0,0,,
-File_14=TSourceModule,'C:\Users\Станислав\Desktop\VentilationSchedule\Word.pas',0,1,368,47,352,0,0,,
+File_0=TSourceModule,'C:\Users\Станислав\Desktop\Чат\История изменений\Чат_99 -комментарии\Server\uMainForm.pas',0,1,1,1,9,0,0,,
+File_1=TSourceModule,'D:\DATA\Рабочий стол 14.04.2019\WorkTime\Prog\DataImport\Main.pas',0,1,43,64,57,0,0,,
+File_2=TSourceModule,'D:\DATA\Рабочий стол 14.04.2019\WorkTime\Prog\DataImport\ImportText.pas',0,1,4,1,1,0,0,,
+File_3=TSourceModule,'D:\DATA\Рабочий стол 14.04.2019\WorkTime\Prog\DataImport\ImportMail.pas',0,1,160,1,1,0,0,,
+File_4=TSourceModule,'D:\DATA\Рабочий стол 14.04.2019\WorkTime\Prog\DataImport\ViewText.pas',0,1,16,1,1,0,0,,
+File_5=TSourceModule,'C:\Users\Станислав\Desktop\Чат\Client\uMainForm.pas',0,1,25,30,37,0,0,,
+File_6=TSourceModule,'C:\Users\Станислав\Desktop\Чат\Client\uMessageForm.pas',0,1,1,23,11,0,0,,
+File_7=TSourceModule,'C:\Users\Станислав\Desktop\Чат\Client\uUsersForm.pas',0,1,1,33,8,0,0,,
+File_8=TSourceModule,'C:\Users\Станислав\Desktop\Чат\Server\uMainForm.pas',0,1,25,47,37,0,0,,
+File_9=TSourceModule,'C:\Users\Станислав\Desktop\Чат\История изменений\Чат_98 -сохранение\Client\uMessageForm.pas',0,1,1,1,8,0,0,,
+File_10=TSourceModule,'C:\Users\Станислав\Desktop\Чат\История изменений\Чат_98 -сохранение\Client\uMainForm.pas',0,1,1,1,9,0,0,,
+File_11=TSourceModule,'C:\Users\Станислав\Desktop\Чат\История изменений\Чат_98 -сохранение\Client\uUsersForm.pas',0,1,1,1,8,0,0,,
 
 [Modules]
-Module0=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_98 -сохранение\Client\Client.dproj
-Module1=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_98 -сохранение\Client\uMessageForm.pas
-Module2=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_98 -сохранение\Client\uMainForm.pas
-Module3=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_98 -сохранение\Client\uUsersForm.pas
+Module0=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_99 -комментарии\Client\Client.dproj
+Module1=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_99 -комментарии\Client\uMessageForm.pas
+Module2=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_99 -комментарии\Client\uUsersForm.pas
+Module3=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_99 -комментарии\Client\uMainForm.pas
 Count=4
 EditWindowCount=1
 
-[C:\Users\Станислав\Desktop\Чат\История изменений\Чат_98 -сохранение\Client\Client.dproj]
+[C:\Users\Станислав\Desktop\Чат\История изменений\Чат_99 -комментарии\Client\Client.dproj]
 ModuleType=TBaseProject
 
-[C:\Users\Станислав\Desktop\Чат\История изменений\Чат_98 -сохранение\Client\uMessageForm.pas]
+[C:\Users\Станислав\Desktop\Чат\История изменений\Чат_99 -комментарии\Client\uMessageForm.pas]
 ModuleType=TSourceModule
 
-[C:\Users\Станислав\Desktop\Чат\История изменений\Чат_98 -сохранение\Client\uMainForm.pas]
+[C:\Users\Станислав\Desktop\Чат\История изменений\Чат_99 -комментарии\Client\uUsersForm.pas]
 ModuleType=TSourceModule
 
-[C:\Users\Станислав\Desktop\Чат\История изменений\Чат_98 -сохранение\Client\uUsersForm.pas]
+[C:\Users\Станислав\Desktop\Чат\История изменений\Чат_99 -комментарии\Client\uMainForm.pas]
 ModuleType=TSourceModule
 
 [EditWindow0]
 ViewCount=4
-CurrentEditView=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_98 -сохранение\Client\Client.dpr
+CurrentEditView=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_99 -комментарии\Client\Client.dpr
 View0=0
 View1=1
 View2=2
@@ -73,47 +70,47 @@ BottomMiddelPanelData=0000080001020200000009000000446F636B5369746530100000004772
 
 [View0]
 CustomEditViewType=TEditView
-Module=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_98 -сохранение\Client\uMainForm.pas
+Module=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_99 -комментарии\Client\uMainForm.pas
 CursorX=1
 CursorY=9
 TopLine=1
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_98 -сохранение\Client\uMainForm.pas
+EditViewName=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_99 -комментарии\Client\uMainForm.pas
 
 [View1]
 CustomEditViewType=TEditView
-Module=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_98 -сохранение\Client\uMessageForm.pas
+Module=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_99 -комментарии\Client\uUsersForm.pas
 CursorX=1
 CursorY=8
 TopLine=1
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_98 -сохранение\Client\uMessageForm.pas
+EditViewName=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_99 -комментарии\Client\uUsersForm.pas
 
 [View2]
 CustomEditViewType=TEditView
-Module=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_98 -сохранение\Client\Client.dpr
-CursorX=1
-CursorY=10
-TopLine=1
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_98 -сохранение\Client\Client.dpr
-
-[View3]
-CustomEditViewType=TEditView
-Module=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_98 -сохранение\Client\uUsersForm.pas
+Module=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_99 -комментарии\Client\uMessageForm.pas
 CursorX=1
 CursorY=8
 TopLine=1
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_98 -сохранение\Client\uUsersForm.pas
+EditViewName=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_99 -комментарии\Client\uMessageForm.pas
+
+[View3]
+CustomEditViewType=TEditView
+Module=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_99 -комментарии\Client\Client.dpr
+CursorX=1
+CursorY=8
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Users\Станислав\Desktop\Чат\История изменений\Чат_99 -комментарии\Client\Client.dpr
 
 [Watches]
 Count=0

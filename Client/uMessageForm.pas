@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.ExtCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.ExtCtrls, IniFiles;
 
 type
   TMessageForm = class(TForm)
@@ -108,7 +108,19 @@ begin
     if Key=VK_RETURN then BtnSend.Click;
 end;
 procedure TMessageForm.FormClose(Sender: TObject; var Action: TCloseAction);
+var
+ Ini:TIniFile;
 begin
+  Ini:=TIniFile.Create(ExtractFilePath(Application.ExeName)+'Config.ini');
+  Ini.WriteBool('MessageForm', 'WindowState', WindowState=TWindowState.wsMaximized);
+  if WindowState<>TWindowState.wsMaximized then
+  begin
+    Ini.WriteInteger('MessageForm', 'Left', MessageForm.Left);
+    Ini.WriteInteger('MessageForm', 'Top', MessageForm.Top);
+    Ini.WriteInteger('MessageForm', 'Height', MessageForm.Height);
+    Ini.WriteInteger('MessageForm', 'Width', MessageForm.Width);
+  end;
+  Ini.Free;
   Tmr.Enabled:=False;
   while WaitResult=True do Sleep(100);
   IndySendText('!'+MainForm.EdtName.Text);
@@ -125,7 +137,18 @@ begin
 end;
 
 procedure TMessageForm.FormShow(Sender: TObject);
+var
+ Ini:TIniFile;
 begin
+  Ini:=TIniFile.Create(ExtractFilePath(Application.ExeName)+'Config.ini');
+  MessageForm.Left:=Ini.ReadInteger('MessageForm', 'Left', MessageForm.Left);
+  MessageForm.Top:=Ini.ReadInteger('MessageForm', 'Top', MessageForm.Top);
+  MessageForm.Height:=Ini.ReadInteger('MessageForm', 'Height', MessageForm.Height);
+  MessageForm.Width:=Ini.ReadInteger('MessageForm', 'Width', MessageForm.Width);
+  if Ini.ReadBool('MessageForm', 'WindowState', False)=True then
+    WindowState:=TWindowState.wsMaximized else
+      WindowState:=TWindowState.wsNormal;
+  Ini.Free;
   RchEdt.Clear;
   Tmr.Enabled:=True;
 end;

@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, IdBaseComponent,
-  IdComponent, IdTCPConnection, IdTCPClient;
+  IdComponent, IdTCPConnection, IdTCPClient, IniFiles;
 
 type
   TMainForm = class(TForm)
@@ -17,10 +17,12 @@ type
     IdTCPClient: TIdTCPClient;
     procedure BtnConnectClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    Port:Integer;
   end;
 
 Procedure IndySendText(Text:string);
@@ -96,7 +98,7 @@ begin
   BtnConnect.Enabled:=False;
   Application.ProcessMessages;
   IdTCPClient.Host:=EdtIP.Text;
-  IdTCPClient.Port:=1234;
+  IdTCPClient.Port:=MainForm.Port;
   try
     IdTCPClient.Connect;
   Except
@@ -125,6 +127,8 @@ begin
 end;
 
 procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
+var
+  Ini:TIniFile;
 begin
   if IdTCPClient.Connected=True then
   begin
@@ -132,6 +136,22 @@ begin
       if IndyReadText<>'0' then ShowMessage('Ошибка соединения');
         IdTCPClient.Disconnect;
   end;
+  Ini:=TIniFile.Create(ExtractFilePath(Application.ExeName)+'Config.ini');
+  Ini.WriteString('Setting', 'IP', EdtIP.Text);
+  Ini.WriteString('Setting', 'Name', EdtName.Text);
+  Ini.WriteInteger('Setting', 'Port', MainForm.Port);
+  Ini.Free;
+end;
+
+procedure TMainForm.FormShow(Sender: TObject);
+var
+ Ini:TIniFile;
+begin
+  Ini:=TIniFile.Create(ExtractFilePath(Application.ExeName)+'Config.ini');
+    EdtIP.Text:=Ini.ReadString('Setting', 'IP', '');
+     EdtName.Text:=Ini.ReadString('Setting', 'Name', '');
+  MainForm.Port:=Ini.ReadInteger('Setting', 'Port', 1234);
+   Ini.Free;
 end;
 
 end.

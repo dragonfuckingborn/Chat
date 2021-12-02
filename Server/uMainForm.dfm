@@ -14,6 +14,7 @@ object MainForm: TMainForm
   Font.Name = 'Segoe UI'
   Font.Style = []
   KeyPreview = True
+  OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 144
   TextHeight = 32
