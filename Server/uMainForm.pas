@@ -33,6 +33,10 @@ type
     Messages:string; //Очередь сообщений
 end;
 
+Const
+  SeparatorOne=#1;
+  SeparatorTwo=#2;
+
 var
   MainForm: TMainForm;
 
@@ -168,8 +172,8 @@ begin
     if Clients[I].Used=False then Continue;
     //Если занят то игнорируем
     if Clients[I].Busy=True then Continue;
-    //Добавляем в Result имя клиента, разделитель #
-    Result:=Result+Clients[I].Name+'#'; //# - разделитель
+    //Добавляем в Result имя клиента, разделитель
+    Result:=Result+Clients[I].Name+SeparatorOne;
   end;
 end;
 
@@ -181,7 +185,7 @@ var
 begin
   Result:=False; //По умолчанию False
   //Получаем имя пользователя
-  User:=Copy(Text, 1, AnsiPos('&', Text)-1);
+  User:=Copy(Text, 1, AnsiPos(SeparatorTwo, Text)-1);
   //перебираем список
   for I := 1 to High(Clients) do
   begin
@@ -193,7 +197,7 @@ begin
     if AnsiUpperCase(User)='ОБЩИЙ' then
     begin
       //Отправка всем пользователям
-      Clients[I].Messages:=Clients[I].Messages+Text+'#';
+      Clients[I].Messages:=Clients[I].Messages+Text+SeparatorOne;
       Result:=True; //Успешно
     end else
     begin
@@ -201,7 +205,7 @@ begin
       if AnsiUpperCase(Clients[I].Name)=AnsiUpperCase(User) then
       begin
         //ставим сообщение в очередь
-        Clients[I].Messages:=Clients[I].Messages+Text+'#';
+        Clients[I].Messages:=Clients[I].Messages+Text+SeparatorOne;
         Result:=True; //успешно
         Exit;
       end;
@@ -406,7 +410,6 @@ begin
   if Text[1]='*' then //звездочка - запрос на список клиентов
   begin
     //Выдали список активных клиентов
-    //формат: User1#User2#User3 разделитель #
     IndySendText(AContext, GetAllClients);
   end;
 
@@ -424,7 +427,7 @@ begin
     //Удаляем служебный символ
     Delete(Text, 1, 1);
     //Отправляем сообщения при наличии
-    //будет отправлено либо "0" либо сообщения с разделителем #
+    //будет отправлено либо "0" либо сообщения
     IndySendText(AContext, GetMessages(Text));
   end;
 

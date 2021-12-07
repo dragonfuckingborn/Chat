@@ -18,7 +18,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure TmrTimer(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure EdtTextKeyPress(Sender: TObject; var Key: Char);
     procedure EdtTextKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure RchEdtChange(Sender: TObject);
     procedure RchEdtMouseDown(Sender: TObject; Button: TMouseButton;
@@ -76,15 +75,15 @@ begin
   //Если сообщения есть (не равны 0)
   if Text<>'0' then
   begin
-    //Сообщения хранятся в очереди, разделитель #
+    //Сообщения хранятся в очереди
     while Text<>'' do
     begin
-      //Извлекаем Кому, разделитель &
-      ToText:=AnsiUpperCase(Copy(Text, 1, AnsiPos('&', Text)-1));
-      Delete(Text, 1, AnsiPos('&', Text));
-      //Извлекаем От кого, разделитель &
-      FromText:=Copy(Text, 1, AnsiPos('&', Text)-1);
-      Delete(Text, 1, AnsiPos('&', Text));
+      //Извлекаем Кому
+      ToText:=AnsiUpperCase(Copy(Text, 1, AnsiPos(SeparatorTwo, Text)-1));
+      Delete(Text, 1, AnsiPos(SeparatorTwo, Text));
+      //Извлекаем От кого, разделитель
+      FromText:=Copy(Text, 1, AnsiPos(SeparatorTwo, Text)-1);
+      Delete(Text, 1, AnsiPos(SeparatorTwo, Text));
       //Если Кому=общий или Кому=имя клиента то
       if (ToText='ОБЩИЙ') or (ToText=AnsiUpperCase(MainForm.EdtName.Text)) then
       begin
@@ -92,11 +91,11 @@ begin
         if AnsiUpperCase(FromText)<>AnsiUpperCase(MainForm.EdtName.Text) then
         begin
           //Отправляем собщение на экран, цвет красный
-          SentTextToRichEdit(FromText, Copy(Text, 1, AnsiPos('#', Text)-1), clRed);
+          SentTextToRichEdit(FromText, Copy(Text, 1, AnsiPos(SeparatorOne, Text)-1), clRed);
         end;
       end;
-      //Удаляем сообщение из очереди, разделитель #
-      Delete(Text, 1, AnsiPos('#', Text));
+      //Удаляем сообщение из очереди
+      Delete(Text, 1, AnsiPos(SeparatorOne, Text));
     end;
   end;
 end;
@@ -111,8 +110,9 @@ begin
   while WaitResult=True do Sleep(100);
   //Блокируем канал для своих нужд
   WaitResult:=True;
-  //Отправляем сообщение на сервер: =Кому&ОтКого&Текст
-  IndySendText('='+UserName+'&'+MainForm.EdtName.Text+'&'+EdtText.Text);
+  //Отправляем сообщение на сервер
+  IndySendText('='+UserName+SeparatorTwo+MainForm.EdtName.Text+SeparatorTwo+
+    EdtText.Text);
   //Если успешно (0 - ошибок нет)
   if IndyReadText='0' then
   begin
@@ -127,14 +127,6 @@ begin
   end;
   //Освобождаем канал
   WaitResult:=False;
-end;
-
-procedure TMessageForm.EdtTextKeyPress(Sender: TObject; var Key: Char);
-//Процедура класса - событие - нажатие клавиши в поле ввода с определением символа
-begin
-  //Блокируем ввод некоторых служебных символов
-  if Key='#' then Key:=#0;
-  if Key='&' then Key:=#0;
 end;
 
 procedure TMessageForm.EdtTextKeyUp(Sender: TObject; var Key: Word;

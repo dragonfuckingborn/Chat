@@ -67,7 +67,6 @@ object MessageForm: TMessageForm
       Margins.Bottom = 0
       Align = alClient
       TabOrder = 0
-      OnKeyPress = EdtTextKeyPress
       OnKeyUp = EdtTextKeyUp
     end
     object BtnSend: TButton
@@ -89,7 +88,7 @@ object MessageForm: TMessageForm
     Enabled = False
     Interval = 500
     OnTimer = TmrTimer
-    Left = 32
+    Left = 40
     Top = 32
   end
 end

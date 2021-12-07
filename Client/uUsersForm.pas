@@ -49,9 +49,9 @@ begin
   while Users<>'' do
   begin
     //Добавляем в listbox
-    UsersForm.ListBox.Items.Add(Copy(Users, 1, AnsiPos('#', Users)-1));
-    //Удаляем из ответа, разделитель #
-    Delete(Users, 1, AnsiPos('#', Users));
+    UsersForm.ListBox.Items.Add(Copy(Users, 1, AnsiPos(SeparatorOne, Users)-1));
+    //Удаляем из ответа
+    Delete(Users, 1, AnsiPos(SeparatorOne, Users));
   end;
   //Удаляем себя из списка
   //Перебираем список

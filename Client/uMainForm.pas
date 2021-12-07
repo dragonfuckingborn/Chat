@@ -29,6 +29,10 @@ type
 Procedure IndySendText(Text:string);
 Function IndyReadText:string;
 
+Const
+  SeparatorOne=#1;
+  SeparatorTwo=#2;
+
 var
   MainForm: TMainForm;
 

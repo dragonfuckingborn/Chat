@@ -2,8 +2,8 @@ object MainForm: TMainForm
   Left = 0
   Top = 0
   Caption = #1057#1077#1088#1074#1077#1088
-  ClientHeight = 389
-  ClientWidth = 608
+  ClientHeight = 344
+  ClientWidth = 578
   Color = clBtnFace
   Constraints.MinHeight = 400
   Constraints.MinWidth = 600
@@ -22,7 +22,7 @@ object MainForm: TMainForm
     AlignWithMargins = True
     Left = 12
     Top = 24
-    Width = 584
+    Width = 554
     Height = 38
     Margins.Left = 12
     Margins.Top = 24
@@ -43,8 +43,8 @@ object MainForm: TMainForm
     AlignWithMargins = True
     Left = 12
     Top = 86
-    Width = 584
-    Height = 291
+    Width = 554
+    Height = 246
     Margins.Left = 12
     Margins.Top = 24
     Margins.Right = 12
@@ -69,7 +69,7 @@ object MainForm: TMainForm
     Bindings = <>
     DefaultPort = 0
     OnExecute = IdTCPServerExecute
-    Left = 32
+    Left = 24
     Top = 16
   end
 end
